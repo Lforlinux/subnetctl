@@ -85,7 +85,7 @@ function App() {
             <p className="text-sm text-gray-500 dark:text-gray-400">
               Built for network administrators and developers • 
               <a 
-                href="https://github.com/Lforlinux/subnetctl.git" 
+                href="https://github.com/Lforlinux/subnetctl" 
                 className="ml-1 text-blue-600 hover:text-blue-700 transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
