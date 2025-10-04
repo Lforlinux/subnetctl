@@ -1,0 +1,15 @@
+services:
+  subnetctl:
+    build: .
+    ports:
+      - "8181:80"
+    container_name: subnetctl
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
