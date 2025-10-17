@@ -2,7 +2,7 @@
 
 A professional CIDR subnet calculator for network administrators and developers. Built with React and modern web technologies, subnetctl provides comprehensive subnet analysis with binary representations, network classification, and a clean, technical interface.
 
-🌐 **Live Demo**: [https://lforlinux.github.io/subnetctl](https://lforlinux.github.io/subnetctl)
+🌐 **Live Demo**: [https://l4linux.com/subnetctl](https://l4linux.com/subnetctl/)
 
 ---
 
