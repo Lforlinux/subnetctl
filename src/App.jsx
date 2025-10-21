@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import InputForm from './components/InputForm';
 import SubnetResults from './components/SubnetResults';
 import ThemeToggle from './components/ThemeToggle';
@@ -8,6 +8,7 @@ function App() {
   const [subnetInfo, setSubnetInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isDark, setIsDark] = useState(false);
 
   const handleCalculate = async (cidr) => {
     setIsLoading(true);
@@ -24,37 +25,47 @@ function App() {
     }
   };
 
-  return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
-      {/* Header */}
-      <header className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex-1"></div>
-            <div className="flex flex-col items-center text-center">
-              <h1 className="text-3xl font-bold header-gradient mb-1">
-                subnetctl
-              </h1>
-              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-                CIDR Subnet Calculator
-              </p>
-            </div>
-            <div className="flex-1 flex justify-end">
-              <ThemeToggle />
-            </div>
-          </div>
-        </div>
-      </header>
+  // Theme management
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      setIsDark(true);
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
 
-      {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  const toggleTheme = () => {
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    if (newTheme) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
+      <div className="container mx-auto px-4 py-8 flex-1">
+        <header className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-white mb-2" style={{textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'}}>
+            subnetctl
+          </h1>
+          <p className="text-white" style={{opacity: 0.9, textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)'}}>
+            CIDR Subnet Calculator for network administrators and developers.
+          </p>
+        </header>
+
         <div className="space-y-8">
           {/* Input Form */}
           <InputForm onCalculate={handleCalculate} isLoading={isLoading} />
           
           {/* Error Display */}
           {error && (
-            <div className="tech-card p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20">
+            <div className="card p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20">
               <div className="flex">
                 <div className="flex-shrink-0">
                   <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
@@ -76,24 +87,11 @@ function App() {
           {/* Results */}
           {subnetInfo && <SubnetResults subnetInfo={subnetInfo} />}
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center">
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Built for network administrators and developers • 
-              <a 
-                href="https://github.com/Lforlinux/subnetctl" 
-                className="ml-1 text-blue-600 hover:text-blue-700 transition-colors duration-200"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View on GitHub
-              </a>
-            </p>
-          </div>
+      </div>
+      
+      <footer className="footer">
+        <div className="container mx-auto px-4">
+          <p>&copy; 2025 Lekshmi Kolappan | View this project on <a href="https://github.com/Lforlinux/subnetctl" target="_blank" rel="noopener noreferrer">GitHub</a></p>
         </div>
       </footer>
     </div>

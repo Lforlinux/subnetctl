@@ -3,7 +3,7 @@ import CopyButton from './CopyButton';
 
 const BinaryDisplay = ({ label, value, binary, className = '' }) => {
   return (
-    <div className={`relative tech-card p-6 ${className}`}>
+    <div className={`relative card p-6 ${className}`}>
       <CopyButton text={binary} />
       <div className="mb-4">
         <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">{label}</h4>

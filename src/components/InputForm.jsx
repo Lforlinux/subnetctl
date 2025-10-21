@@ -36,7 +36,7 @@ const InputForm = ({ onCalculate, isLoading }) => {
   ];
 
   return (
-    <div className="tech-card p-8">
+    <div className="card p-8">
       <div className="mb-6">
         <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
           CIDR Subnet Calculator
@@ -69,23 +69,26 @@ const InputForm = ({ onCalculate, isLoading }) => {
           </div>
         </div>
 
-        <button
-          type="submit"
-          disabled={isLoading || !cidr.trim()}
-          className="tech-button w-full disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {isLoading ? 'Calculating...' : 'Calculate Subnet'}
-        </button>
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            disabled={isLoading || !cidr.trim()}
+            className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <span className="btn-icon">🔍</span>
+            {isLoading ? 'Calculating...' : 'Calculate Subnet'}
+          </button>
+        </div>
       </form>
 
       <div className="mt-8">
         <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 font-medium">Example CIDR notations:</p>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-3 justify-center">
           {exampleCIDRs.map((example) => (
             <button
               key={example}
               onClick={() => setCidr(example)}
-              className="tech-button-secondary"
+              className="btn-secondary"
             >
               {example}
             </button>

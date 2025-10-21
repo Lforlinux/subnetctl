@@ -37,7 +37,7 @@ const SubnetResults = ({ subnetInfo }) => {
   return (
     <div className="space-y-8">
       {/* Basic Information */}
-      <div className="tech-card p-8">
+      <div className="card p-8">
         <div className="flex justify-between items-center mb-6">
           <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
             Subnet Information
@@ -74,7 +74,7 @@ const SubnetResults = ({ subnetInfo }) => {
       </div>
 
       {/* Host Information */}
-      <div className="tech-card p-8">
+      <div className="card p-8">
         <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
           Host Information
         </h3>
@@ -104,7 +104,7 @@ const SubnetResults = ({ subnetInfo }) => {
       </div>
 
       {/* Network Classification */}
-      <div className="tech-card p-8">
+      <div className="card p-8">
         <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
           Network Classification
         </h3>
@@ -148,7 +148,7 @@ const SubnetResults = ({ subnetInfo }) => {
       </div>
 
       {/* Additional Formats */}
-      <div className="tech-card p-8">
+      <div className="card p-8">
         <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
           Additional Formats
         </h3>
