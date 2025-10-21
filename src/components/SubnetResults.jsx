@@ -39,7 +39,7 @@ const SubnetResults = ({ subnetInfo }) => {
       {/* Basic Information */}
       <div className="card p-8">
         <div className="flex justify-between items-center mb-6">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+          <h3 className="text-xl font-semibold text-gray-900">
             Subnet Information
           </h3>
           <CopyButton text={`${ipAddress}/${prefixLength}`} />
@@ -75,7 +75,7 @@ const SubnetResults = ({ subnetInfo }) => {
 
       {/* Host Information */}
       <div className="card p-8">
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
+        <h3 className="text-xl font-semibold text-gray-900 mb-6">
           Host Information
         </h3>
         
@@ -105,7 +105,7 @@ const SubnetResults = ({ subnetInfo }) => {
 
       {/* Network Classification */}
       <div className="card p-8">
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
+        <h3 className="text-xl font-semibold text-gray-900 mb-6">
           Network Classification
         </h3>
         
@@ -116,7 +116,7 @@ const SubnetResults = ({ subnetInfo }) => {
           </div>
           <div className="result-item">
             <span className="result-label">Address Type:</span>
-            <span className={`result-value ${isPrivate ? 'text-orange-600 dark:text-orange-400' : 'text-green-600 dark:text-green-400'}`}>
+            <span className={`result-value ${isPrivate ? 'text-orange-600' : 'text-green-600'}`}>
               {isPrivate ? 'Private' : 'Public'}
             </span>
           </div>
@@ -149,13 +149,13 @@ const SubnetResults = ({ subnetInfo }) => {
 
       {/* Additional Formats */}
       <div className="card p-8">
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
+        <h3 className="text-xl font-semibold text-gray-900 mb-6">
           Additional Formats
         </h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Subnet Mask</h4>
+            <h4 className="text-sm font-medium text-gray-600 mb-2">Subnet Mask</h4>
             <div className="space-y-2">
               <div className="result-item">
                 <span className="result-label">Decimal:</span>
@@ -169,7 +169,7 @@ const SubnetResults = ({ subnetInfo }) => {
           </div>
           
           <div>
-            <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Wildcard Mask</h4>
+            <h4 className="text-sm font-medium text-gray-600 mb-2">Wildcard Mask</h4>
             <div className="space-y-2">
               <div className="result-item">
                 <span className="result-label">Decimal:</span>

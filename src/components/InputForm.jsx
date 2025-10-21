@@ -38,17 +38,17 @@ const InputForm = ({ onCalculate, isLoading }) => {
   return (
     <div className="card p-8">
       <div className="mb-6">
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
+        <h2 className="text-2xl font-semibold text-gray-900 mb-3">
           CIDR Subnet Calculator
         </h2>
-        <p className="text-gray-600 dark:text-gray-400">
+        <p className="text-gray-600">
           Enter a CIDR notation to calculate subnet information, network details, and binary representations.
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="cidr" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+          <label htmlFor="cidr" className="block text-sm font-medium text-gray-700 mb-3">
             CIDR Notation
           </label>
           <div className="relative">
@@ -82,7 +82,7 @@ const InputForm = ({ onCalculate, isLoading }) => {
       </form>
 
       <div className="mt-8">
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 font-medium">Example CIDR notations:</p>
+        <p className="text-sm text-gray-600 mb-3 font-medium">Example CIDR notations:</p>
         <div className="flex flex-wrap gap-3 justify-center">
           {exampleCIDRs.map((example) => (
             <button

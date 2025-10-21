@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import InputForm from './components/InputForm';
 import SubnetResults from './components/SubnetResults';
-import ThemeToggle from './components/ThemeToggle';
 import { parseCIDR } from './utils/subnetUtils';
 
 function App() {
   const [subnetInfo, setSubnetInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const [isDark, setIsDark] = useState(false);
 
   const handleCalculate = async (cidr) => {
     setIsLoading(true);
@@ -25,30 +23,9 @@ function App() {
     }
   };
 
-  // Theme management
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = !isDark;
-    setIsDark(newTheme);
-    if (newTheme) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  };
 
   return (
     <div className="min-h-screen flex flex-col">
-      <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
       <div className="container mx-auto px-4 py-8 flex-1">
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-white mb-2" style={{textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'}}>
@@ -65,7 +42,7 @@ function App() {
           
           {/* Error Display */}
           {error && (
-            <div className="card p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20">
+            <div className="card p-4 border-l-4 border-red-500 bg-red-50">
               <div className="flex">
                 <div className="flex-shrink-0">
                   <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
@@ -73,10 +50,10 @@ function App() {
                   </svg>
                 </div>
                 <div className="ml-3">
-                  <h3 className="text-sm font-medium text-red-800 dark:text-red-200">
+                  <h3 className="text-sm font-medium text-red-800">
                     Calculation Error
                   </h3>
-                  <div className="mt-2 text-sm text-red-700 dark:text-red-300">
+                  <div className="mt-2 text-sm text-red-700">
                     {error}
                   </div>
                 </div>
